@@ -1,0 +1,9 @@
+#%Module
+#source /opt/Modules/extensions/extensions.tcl
+#docommon
+prepend-path PATH $env(APPS_DIR)/apps/bowtie2/2.3.5.1/bin
+conflict bowtie2
+setenv BOWTIE2_BASE $env(APPS_DIR)/apps/bowtie2/2.3.5.1
+setenv BOWTIE2_ROOT $env(APPS_DIR)/apps/bowtie2/2.3.5.1
+setenv BOWTIE2_VERSION 2.3.5.1
+module-whatis {bowtie2, version 2.3.5.1}

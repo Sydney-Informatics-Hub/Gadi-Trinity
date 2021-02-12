@@ -1,0 +1,17 @@
+#%Module1.0
+prepend-path    PATH $env(APPS_DIR)/apps/python2/2.7.17/bin
+prepend-path    C_INCLUDE_PATH $env(APPS_DIR)/apps/python2/2.7.17/include/python2.7
+prepend-path    CPLUS_INCLUDE_PATH $env(APPS_DIR)/apps/python2/2.7.17/include/python2.7
+prepend-path    CPATH $env(APPS_DIR)/apps/python2/2.7.17/include/python2.7
+prepend-path    FPATH $env(APPS_DIR)/apps/python2/2.7.17/include/python2.7
+prepend-path    LIBRARY_PATH $env(APPS_DIR)/apps/python2/2.7.17/lib
+prepend-path    LD_LIBRARY_PATH $env(APPS_DIR)/apps/python2/2.7.17/lib
+prepend-path    LD_RUN_PATH $env(APPS_DIR)/apps/python2/2.7.17/lib
+prepend-path    MANPATH $env(APPS_DIR)/apps/python2/2.7.17/share/man
+prepend-path    PKG_CONFIG_PATH $env(APPS_DIR)/apps/python2/2.7.17/lib/pkgconfig
+conflict        python2
+setenv          PYTHON2_BASE $env(APPS_DIR)/apps/python2/2.7.17
+setenv          PYTHON2_ROOT $env(APPS_DIR)/apps/python2/2.7.17
+setenv          PYTHON2_VERSION 2.7.17
+module-whatis   {python2, version 2.7.17}
+

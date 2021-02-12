@@ -1,0 +1,119 @@
+#! /bin/bash
+
+## ---------------------------------------------------------------------------
+## TRINITY 1 - CHRYSALIS (not distributed)
+## Cluster inchworm contigs with Chrysalis and map reads
+## Run Chrysalis, stop before parallel assembly of clustered reads
+## Authors: Tracy Chew, Andrey Bliznyuk, Rika Kobayashi
+## Suggested acknowledgement: "The authors acknowledge the scientific and/or technical 
+## assistance of Tracy Chew of the Sydney Informatics Hub at the University of Sydney 
+## and use of the National Computational Infrastructure facility."
+## ---------------------------------------------------------------------------
+
+# Make running up to the end of Chrysalis the first step of the
+# processing chain. This will reduce the traffic of large files to and
+# from network storage. At the end of processing, submit jobs for each
+# of the Fb_?? folders in the read_partitions folder.
+#
+# At the end of processing the TRINITY_WORKDIR directory is not needed
+# as it contains only ephemeral `scratch` data (and isn't used at this
+# stage of processing anyway).
+
+# Environment variables that need to be passed in with -v
+# ${resources}          # Folder containing the apps.tar archive
+# ${input}
+# ${io}
+# ${out}
+# ${cpu_per_node}       # These set resources for downstream tasks not current task
+# ${jobfs_per_node}
+# ${mem_per_node}
+# ${tissue}
+# ${project}
+# ${logs}
+# ${script}             # Folder containing scripts
+# ${seqtype}
+
+tar xf ${resources}/apps.tar -C /tmp/
+export APPS_DIR=/tmp/
+module use ${APPS_DIR}/apps/Modules/modulefiles
+module load trinity/2.9.1
+module load bowtie2/2.3.5.1
+module load samtools/1.10
+module load salmon/1.1.0
+module load python2/2.7.17
+module load jellyfish/2.3.0
+
+# Set trap
+# EXIT runs on any exit, signalled or not.
+finish(){
+	echo "$(date) : Archiving trinity outdir and copying to ${out}"
+	cd ${PBS_JOBFS}
+	tar cf ${out}/trinity_outdir_1.tar trinity_outdir
+	echo "$(date) : Finished archiving trinity_1.pbs"
+
+    # Submit the follow up recursive jobs
+    cd trinity_outdir/${tissue}_trinity_2.9.1/read_partitions
+    for fb in Fb_*
+    do
+        jobids=${jobids}:$(qsub \
+                               -v out="${out}",tissue="${tissue}",fb="${fb}",resources="${resources}",io="${io}" \
+                               -N ${tissue}_${fb} \
+                               -P ${project} \
+                               -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
+                               -q normal \
+                               -W umask=022 \
+                               -l storage=scratch/${project} \
+                               -o ${logs}/${tissue}_job_2_${fb}.o \
+                               -e ${logs}/${tissue}_job_2_${fb}.e \
+                               ${script}/trinity_2_fb.pbs)
+    done
+    
+    jobids=$(echo $jobids | sed -e 's/^://' | sed -e 's/.gadi-pbs//g')
+    echo "Final assembly will commence after jobs: ${jobids}"
+
+    # Submit the final assembly
+    qsub \
+        -W depend=afterok:${jobids} \
+        -v resources="${resources}",tissue="${tissue}",out="${out}",io="${io}" \
+        -P ${project} \
+        -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
+        -q normal \
+        -W umask=022 \
+        -l storage=scratch/${project} \
+        -o ${logs}/${tissue}_job_3.o \
+        -e ${logs}/${tissue}_job_3.e \
+        ${script}/trinity_3_fb.pbs
+    
+}
+trap finish EXIT
+
+# Set variables
+first=$(awk -v taskID=${input} '$1==taskID {print $2}' ${list})
+second=$(awk -v taskID=${input} '$1==taskID {print $3}' ${list})
+
+mkdir -p ${out}
+
+echo "$(date) : Beginning trinity_1.pbs: Run to end of Chrysalis"
+
+export TRINITY_WORKDIR=/dev/shm/trinity_workdir
+
+export TRINITY_OUTDIR=${PBS_JOBFS}/trinity_outdir
+mkdir -p ${TRINITY_OUTDIR}
+cd ${TRINITY_OUTDIR}
+
+# Run trinity, stop before the distributed tasks
+# Set the memory and cpu count based on the PBS variables.
+${TRINITY_HOME}/Trinity \
+               --seqType ${seqtype} \
+	           --max_memory $(($PBS_VMEM/1024/1024/1024))G \
+	           --no_version_check \
+	           --left ${first} \
+	           --right ${second} \
+	           --no_normalize_reads \
+	           --CPU ${PBS_NCPUS} \
+	           --workdir ${TRINITY_WORKDIR} \
+	           --output ${tissue}_trinity_2.9.1 \
+	           --verbose \
+	           --no_distributed_trinity_exec
+
+echo "$(date) : Finished trinity_1.pbs"

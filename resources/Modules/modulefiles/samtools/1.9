@@ -1,0 +1,8 @@
+#%Module1.0
+prepend-path PATH $env(APPS_DIR)/apps/samtools/1.9/bin
+conflict samtools
+setenv SAMTOOLS_BASE $env(APPS_DIR)/apps/samtools/1.9
+setenv SAMTOOLS_ROOT $env(APPS_DIR)/apps/samtools/1.9
+setenv SAMTOOLS_VERSION 1.9
+module-whatis {samtools, version 1.9}
+

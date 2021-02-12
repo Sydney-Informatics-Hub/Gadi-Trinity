@@ -1,0 +1,55 @@
+#! /bin/bash
+## ---------------------------------------------------------------------------
+## TRINITY 3 - FINAL ASSEMBLY
+## Harvesting all assembled transcripts into a single multi-fasta file...
+## Authors: Tracy Chew, Andrey Bliznyuk, Rika Kobayashi
+## Suggested acknowledgement: "The authors acknowledge the scientific and/or technical 
+## assistance of Tracy Chew of the Sydney Informatics Hub at the University of Sydney 
+## and use of the National Computational Infrastructure facility."
+## ---------------------------------------------------------------------------
+
+# Environment variables that need to be passed in with -v
+# ${resources}
+# ${tissue}
+# ${io}
+# ${out}
+
+cd ${io}
+
+tar xf ${resources}/apps.tar -C /tmp/
+export APPS_DIR=/tmp/
+module use ${APPS_DIR}/apps/Modules/modulefiles
+module load trinity/2.9.1
+
+echo "$(date): Beginning trinity_3.pbs: Harvest reads into a final assembly"
+
+export TRINITY_OUTDIR=${PBS_JOBFS}/${tissue}_trinity_2.9.1
+mkdir -p ${TRINITY_OUTDIR}
+
+cd ${TRINITY_OUTDIR}
+
+echo "$(date): Currently in ${TRINITY_OUTDIR}"
+
+for t in ${out}/trinity_outdir_2_Fb_*.tar
+do
+	tar xf $t *.fasta
+done
+
+echo "$(date): ** Harvesting all assembled transcripts into a single multi-fasta file with "${TRINITY_HOME}"/util/support_scripts/partitioned_trinity_aggregator.pl..."
+find read_partitions/ -name '*inity.fasta'  | \
+    ${TRINITY_HOME}/util/support_scripts/partitioned_trinity_aggregator.pl \
+                     --token_prefix TRINITY_DN \
+                     --output_prefix Trinity.tmp
+
+mv Trinity.tmp.fasta ${tissue}.trinity_2.9.1.fasta
+
+echo "$(date): ** Creating genes_trans_map file with "${TRINITY_HOME}"/util/support_scripts/get_Trinity_gene_to_trans_map.pl..."
+
+${TRINITY_HOME}/util/support_scripts/get_Trinity_gene_to_trans_map.pl ${tissue}.trinity_2.9.1.fasta > ${tissue}.trinity_2.9.1.fasta.gene_trans_map
+
+echo "$(date): Moving files back from node"
+
+mv ${tissue}.trinity_2.9.1.fasta ${out}/${tissue}_trinity_2.9.1.fasta
+mv ${tissue}.trinity_2.9.1.fasta.gene_trans_map ${out}/${tissue}_trinity_2.9.1.gene_trans_map
+
+echo "$(date): Done"

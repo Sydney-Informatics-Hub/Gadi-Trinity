@@ -1,0 +1,15 @@
+#%Module1.0
+prepend-path    PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/bin
+prepend-path    C_INCLUDE_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/include
+prepend-path    CPLUS_INCLUDE_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/include
+prepend-path    CPATH $env(APPS_DIR)/apps/jellyfish/2.3.0/include
+prepend-path    FPATH $env(APPS_DIR)/apps/jellyfish/2.3.0/include
+prepend-path    LIBRARY_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/lib
+prepend-path    LD_LIBRARY_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/lib
+prepend-path    LD_RUN_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/lib
+prepend-path    MANPATH $env(APPS_DIR)/apps/jellyfish/2.3.0/share/man
+prepend-path    PKG_CONFIG_PATH $env(APPS_DIR)/apps/jellyfish/2.3.0/lib/pkgconfig
+conflict        jellyfish
+setenv          JELLYFISH_BASE $env(APPS_DIR)/apps/jellyfish/2.3.0
+setenv          JELLYFISH_ROOT $env(APPS_DIR)/apps/jellyfish/2.3.0
+setenv          JELLYFISH_VERSION 2.3.0

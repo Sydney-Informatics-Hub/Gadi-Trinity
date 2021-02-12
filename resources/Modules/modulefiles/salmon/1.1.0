@@ -1,0 +1,10 @@
+#%Module1.0
+prepend-path    PATH $env(APPS_DIR)/apps/salmon/1.1.0/bin
+prepend-path    LIBRARY_PATH $env(APPS_DIR)/apps/salmon/1.1.0/lib
+prepend-path    LD_LIBRARY_PATH $env(APPS_DIR)/apps/salmon/1.1.0/lib
+prepend-path    LD_RUN_PATH $env(APPS_DIR)/apps/salmon/1.1.0/lib
+conflict        salmon
+setenv          SALMON_BASE $env(APPS_DIR)/apps/salmon/1.1.0
+setenv          SALMON_ROOT $env(APPS_DIR)/apps/salmon/1.1.0
+setenv          SALMON_VERSION 1.1.0
+module-whatis   {salmon, version 1.1.0}

@@ -135,15 +135,26 @@ In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied
 ### Authors 
 
 - Tracy Chew (Sydney Informatics Hub, University of Sydney)
+- Georgina Samaha (Sydney Informatics Hub, University of Sydney)
 - Andrey Bliznyuk (National Computational Infrastructure)
 - Rika Kobayashi (National Computational Infrastructure)
 - Matthew Downton (National Computational Infrastructure)
 - Ben Evans (National Computational Infrastructure) 
 
 
-Please acknowledge us and show your support.
+# Acknowledgements
+Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.
 
-Suggested acknowledgement: "The authors acknowledge the scientific and/or technical assistance of Tracy Chew of the Sydney Informatics Hub at the University of Sydney and use of the National Computational Infrastructure facility."
+Suggested acknowledgements:
+
+NCI Gadi
+
+The authors acknowledge the technical assistance provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government.
+
+# Cite us to support us!
+If you use our pipelines, please cite us:
+
+Sydney Informatics Hub, Core Research Facilities, University of Sydney, 2021, The Sydney Informatics Hub Bioinformatics Repository, <date accessed>, https://github.com/Sydney-Informatics-Hub/Bioinformatics
 
 ### References 
 
@@ -151,6 +162,4 @@ Grabherr MG, Haas BJ, Yassour M, et al. Full-length transcriptome assembly from 
 
 Haas BJ, Papanicolaou A, Yassour M, et al. De novo transcript sequence reconstruction from RNA-seq using the Trinity platform for reference generation and analysis. Nat Protoc. 2013;8(8):1494-1512. [doi:10.1038/nprot.2013.084](https://www.ncbi.nlm.nih.gov/pmc/articles/pmid/23845962/)
 
-
-### Citation 
 

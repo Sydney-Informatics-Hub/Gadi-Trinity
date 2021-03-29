@@ -136,11 +136,11 @@ In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied
 
 - Tracy Chew (Sydney Informatics Hub, University of Sydney)
 - Georgina Samaha (Sydney Informatics Hub, University of Sydney)
+- Rosemarie Sadsad (Sydney Informatics Hub, University of Sydney)
 - Andrey Bliznyuk (National Computational Infrastructure)
 - Rika Kobayashi (National Computational Infrastructure)
 - Matthew Downton (National Computational Infrastructure)
 - Ben Evans (National Computational Infrastructure) 
-
 
 # Acknowledgements
 Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.

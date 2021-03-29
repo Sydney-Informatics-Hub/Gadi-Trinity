@@ -95,6 +95,7 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 | trinity_2_fb_0.pbs | 48   | 80.33GB  | 115:52:10 | 2:33:03       | 19.89GB    | 0.95       | 244.88        |
 | trinity_2_fb_1.pbs | 48   | 17.42GB  | 18:51:03  | 0:26:00       | 243.04MB   | 0.91       | 41.6          |
 | trinity_3.pbs      | 48   | 5.14GB   | 0:00:12   | 0:01:26       | 267.1MB    | 0          | 2.29          |
+| __Total__              |      |          |           | 5:33:45       |            |            | 576           |
 
 
 **Rye rust**
@@ -105,6 +106,7 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 | trinity_2_fb_0.pbs | 48   | 66.32GB  | 21:48:17 | 2:05:58       | 19.73GB    | 0.93       | 201.55        |
 | trinity_2_fb_1.pbs | 48   | 25.09GB  | 1:51:32  | 0:02:51       | 61.87MB    | 0.82       | 4.56          |
 | trinity_3.pbs      | 48   | 4.39GB   | 0:00:08  | 0:00:16       | 192.7MB    | 0.01       | 0.43          |
+| __Total__              |      |          |          | 4:57:23       |            |            | 480           |
 
 **Scabrum rust**
 
@@ -114,6 +116,7 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 | trinity_2_fb_0.pbs | 48   | 53.1GB   | 99:12:17 | 2:12:50       | 11.39GB    | 0.93       | 212.53        |
 | trinity_2_fb_1.pbs | 48   | 20.24GB  | 11:01:19 | 0:15:38       | 185.78MB   | 0.88       | 25.01         |
 | trinity_3.pbs      | 48   | 4.54GB   | 0:00:08  | 0:00:13       | 233.19MB   | 0.01       | 0.35          |
+| __Total__              |      |          |          | 3:59:19       |            |            | 408           |
 <br />
 
 ### Additional notes 

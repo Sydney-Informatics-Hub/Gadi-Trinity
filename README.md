@@ -89,32 +89,31 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 <br />
 **Wheat stem rust**
 
-Job | CPUs used | Mem used (Gb) | Walltime | Service units/job | Service units/sample
----------- | ---------- | ---------- | ---------- | ---------- | ---------- 
-trinity_1.pbs | 48 | 183 | 2:59:16 |  287 | 576
-trinity_2_fb_0.pbs | 48 | 80 | 2:33:03 | 245|
-trinity_2_fb_1.pbs | 48 | 17 | 0:26:00 | 42 |
-trinity_3 | 48 | 5 | 0:01:26| 2 |
+| Job                | CPUs | Mem      | CPUtime   | Walltime_used | JobFS_used | Efficiency | Service_units |
+|--------------------|------|----------|-----------|---------------|------------|------------|---------------|
+| trinity_1.pbs      | 48   | 182.49GB | 68:27:15  | 2:59:16       | 193.35GB   | 0.48       | 286.83        |
+| trinity_2_fb_0.pbs | 48   | 80.33GB  | 115:52:10 | 2:33:03       | 19.89GB    | 0.95       | 244.88        |
+| trinity_2_fb_1.pbs | 48   | 17.42GB  | 18:51:03  | 0:26:00       | 243.04MB   | 0.91       | 41.6          |
+| trinity_3.pbs      | 48   | 5.14GB   | 0:00:12   | 0:01:26       | 267.1MB    | 0          | 2.29          |
 
 
 **Rye rust**
 
-Job | CPUs used | Mem used (Gb) | Walltime | Service units/job | Service units/sample
----------- | ---------- | ---------- | ---------- | ---------- | ---------- 
-trinity_1.pbs | 48 | 182 | 2:51:09 | 274 | 480
-trinity_2_fb_0.pbs | 48 | 66 | 2:05:58 | 202 |
-trinity_2_fb_1.pbs | 48 | 25 | 0:02:51 | 5 |
-trinity_3 | 48 | 4 | 0:00:16 | 0 |
-
+| Job                | CPUs | Mem      | CPUtime  | Walltime_used | JobFS_used | Efficiency | Service_units |
+|--------------------|------|----------|----------|---------------|------------|------------|---------------|
+| trinity_1.pbs      | 48   | 182.26GB | 23:37:52 | 2:51:09       | 182.89GB   | 0.52       | 273.84        |
+| trinity_2_fb_0.pbs | 48   | 66.32GB  | 21:48:17 | 2:05:58       | 19.73GB    | 0.93       | 201.55        |
+| trinity_2_fb_1.pbs | 48   | 25.09GB  | 1:51:32  | 0:02:51       | 61.87MB    | 0.82       | 4.56          |
+| trinity_3.pbs      | 48   | 4.39GB   | 0:00:08  | 0:00:16       | 192.7MB    | 0.01       | 0.43          |
 
 **Scabrum rust**
 
-Job | CPUs used | Mem used (Gb) | Walltime | Service units/job | Service units/sample
----------- | ---------- | ---------- | ---------- | ---------- | ---------- 
-trinity_1.pbs | 48 | 142 | 1:54:52 | 184 | 432
-trinity_2_fb_0.pbs | 48 | 53 | 2:16:30 | 218 |
-trinity_2_fb_1.pbs | 48 | 20 | 0:17:35 | 28 |
-trinity_3 | 48 | 5 | 0:01:10 | 2 |
+| Job                | CPUs | Mem      | CPUtime  | Walltime_used | JobFS_used | Efficiency | Service_units |
+|--------------------|------|----------|----------|---------------|------------|------------|---------------|
+| trinity_1.pbs      | 48   | 141.51GB | 37:21:15 | 1:46:16       | 111.15GB   | 0.44       | 170.03        |
+| trinity_2_fb_0.pbs | 48   | 53.1GB   | 99:12:17 | 2:12:50       | 11.39GB    | 0.93       | 212.53        |
+| trinity_2_fb_1.pbs | 48   | 20.24GB  | 11:01:19 | 0:15:38       | 185.78MB   | 0.88       | 25.01         |
+| trinity_3.pbs      | 48   | 4.54GB   | 0:00:08  | 0:00:13       | 233.19MB   | 0.01       | 0.35          |
 <br />
 
 ### Additional notes 

@@ -147,11 +147,11 @@ In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied
 # Acknowledgements
 Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.
 
-Suggested acknowledgements:
+### Suggested acknowledgements:
 
 NCI Gadi
 
-The authors acknowledge the technical assistance provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government.
+The authors acknowledge the technical assistance provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government and Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia funding.
 
 # Cite us to support us!
 If you use our pipelines, please cite us:

@@ -131,8 +131,8 @@ Each task running `trinity_2_fb.pbs` works on a single file bin representing ~10
 
 In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied to the node. Only the full assembly is copied back.
 
-
-## Acknowledgements and citations
+# Acknowledgements
+Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.
 
 ### Authors 
 
@@ -143,9 +143,6 @@ In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied
 - Rika Kobayashi (National Computational Infrastructure)
 - Matthew Downton (National Computational Infrastructure)
 - Ben Evans (National Computational Infrastructure) 
-
-# Acknowledgements
-Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.
 
 ### Suggested acknowledgements:
 
@@ -158,7 +155,7 @@ If you use our pipelines, please cite us:
 
 Sydney Informatics Hub, Core Research Facilities, University of Sydney, 2021, The Sydney Informatics Hub Bioinformatics Repository, \<date accessed\>, https://github.com/Sydney-Informatics-Hub/Bioinformatics
 
-### References 
+# References 
 
 Grabherr MG, Haas BJ, Yassour M, et al. Full-length transcriptome assembly from RNA-Seq data without a reference genome. Nat Biotechnol. 2011;29(7):644-652. Published 2011 May 15. [doi:10.1038/nbt.1883](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3571712/)
 

@@ -8,7 +8,7 @@ The Gadi-Trinity workflow leverages multiple nodes on NCI Gadi to run a number o
 <br />
 <br />
 
-<img src="https://github.com/Sydney-Informatics-Hub/Gadi-Trinity/blob/a86ca1f2f98dff0adcbcc05b1235068bc132e908/trinity_gadi.png" width="100%" height="100%">
+<img src="https://github.com/Sydney-Informatics-Hub/Gadi-Trinity/blob/eda0a74bc0bee446bc84a13411fecfc2be734521/trinity_gadi_process.png" width="100%" height="100%">
 <br />
 <br />
 

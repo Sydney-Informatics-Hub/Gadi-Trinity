@@ -1,0 +1,8 @@
+#%Module1.0
+prepend-path    PATH $env(APPS_DIR)/apps/trinity/2.12.0/.
+setenv          TRINITY_HOME $env(APPS_DIR)/apps/trinity/2.12.0
+conflict        trinity
+setenv          TRINITY_BASE $env(APPS_DIR)/apps/trinity/2.12.0
+setenv          TRINITY_ROOT $env(APPS_DIR)/apps/trinity/2.12.0
+setenv          TRINITY_VERSION 2.12.0
+module-whatis   {trinity, version 2.12.0}

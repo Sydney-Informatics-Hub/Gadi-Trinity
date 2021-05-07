@@ -8,6 +8,7 @@ cp -r /apps/salmon apps
 cp -r /apps/samtools apps
 cp -r /apps/trinity apps
 cp -r Modules apps
-patch ./apps/trinity/2.9.1/Trinity Trinity.patch
+patch ./apps/trinity/2.9.1/Trinity Trinity-2.9.1.patch
+patch ./apps/trinity/2.12.0/Trinity Trinity-2.12.0.patch
 tar cf apps.tar apps
 rm -fr apps

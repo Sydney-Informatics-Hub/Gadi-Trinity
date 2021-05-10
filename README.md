@@ -142,6 +142,7 @@ Acknowledgements (and co-authorship, where appropriate) are an important way for
 - Andrey Bliznyuk (National Computational Infrastructure)
 - Rika Kobayashi (National Computational Infrastructure)
 - Matthew Downton (National Computational Infrastructure)
+- Ben Menadue (National Computational Infrastructure)
 - Ben Evans (National Computational Infrastructure) 
 
 ### Suggested acknowledgements:

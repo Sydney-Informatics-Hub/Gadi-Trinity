@@ -121,15 +121,17 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 
 ### Additional notes 
 
-Trinity’s running time is exponentially related to the number of de Bruijn graph branches created. Given walltime limitations on Gadi, the Gadi-Trinity workflow is not recommended for use on genomes >2 Gb. For larger single sample and global assemblies, we recommend the [Flashlite-Trinity workflow](https://github.com/Sydney-Informatics-Hub/Flashlite-Trinity) that runs Trinity on the University of Queensland’s HPC, Flashlite. 
+* Trinity’s running time is exponentially related to the number of de Bruijn graph branches created. Given walltime limitations on Gadi, the Gadi-Trinity workflow is not recommended for use on genomes >2 Gb. For larger single sample and global assemblies, we recommend the [Flashlite-Trinity workflow](https://github.com/Sydney-Informatics-Hub/Flashlite-Trinity) that runs Trinity on the University of Queensland’s HPC, Flashlite. 
 
-All work is performed local to the node in `/jobfs` or in `/dev/shm`. 
+* All work is performed local to the node in `/jobfs` or in `/dev/shm`. 
 
-At the end of `trinity_1_fb.pbs`, a single tar file containing the full Trinity output directory is copied back to network storage. This will be >100 Gb.
+* At the end of `trinity_1_fb.pbs`, a single tar file containing the full Trinity output directory is copied back to network storage. This will be >100 Gb.
 
-Each task running `trinity_2_fb.pbs` works on a single file bin representing ~100,000 tasks. Only the recursive_trinity.cmds and the relevant data from read_partitions are copied to the node. The full read_partitions directory is archived and pushed back to network storage at the end of processing. This will be up to 10 Gb.
+* Each task running `trinity_2_fb.pbs` works on a single file bin representing ~100,000 tasks. Only the recursive_trinity.cmds and the relevant data from read_partitions are copied to the node. The full read_partitions directory is archived and pushed back to network storage at the end of processing. This will be up to 10 Gb.
 
-In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied to the node. Only the full assembly is copied back.
+* In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied to the node. Only the full assembly is copied back.  
+
+* The `sort-recursive.py` script is run by `trinity_2_fb.pbs`. It will sort the recursive commands to run on input files based on their size (largest to smallest). This is included to avoid long running, single CPU jobs from holding up a whole node. It improves overall job efficiency. 
 
 # Acknowledgements
 Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.

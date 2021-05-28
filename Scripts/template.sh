@@ -1,17 +1,26 @@
 #!/bin/bash
 
-## ---------------------------------------------------------------------------
-## This will launch trinity for all samples listed in a fastq.list file.
-## Trinity is run 3 parts
-## Authors: Tracy Chew, Andrey Bliznyuk, Rika Kobayashi
-## Suggested acknowledgement: "The authors acknowledge the scientific and/or technical 
-## assistance of Tracy Chew of the Sydney Informatics Hub at the University of Sydney 
-## and use of the National Computational Infrastructure facility."
-## ---------------------------------------------------------------------------
-## list of fastq files, which can be created by: readlink -f *fq.gz | sort -V | xargs -n 2 | cat -n > test_fastq.list
-## ---------------------------------------------------------------------------
-
-# Copy this script into the base directory of project and edit as appropriate
+##########################################################################
+# 
+# Platform: NCI Gadi HPC
+# Usage: Copy this script into the base directory of project and edit as appropriate.
+# sh template.sh will launch trinity for all samples in fastq.list file. 
+# Version: 1.0
+#
+# For more details see: https://github.com/Sydney-Informatics-Hub/gadi-trinity
+#
+# If you use this script towards a publication, please acknowledge the
+# Sydney Informatics Hub (or co-authorship, where appropriate).
+#
+# Suggested acknowledgement:
+# The authors acknowledge the support provided by the Sydney Informatics Hub, 
+# a Core Research Facility of the University of Sydney. This research/project 
+# was undertaken with the assistance of resources and services from the National 
+# Computational Infrastructure (NCI), which is supported by the Australian 
+# Government, and the Australian BioCommons which is enabled by NCRIS via 
+# Bioplatforms Australia funding.
+# 
+##########################################################################
 
 # Set variables
 project= <project>

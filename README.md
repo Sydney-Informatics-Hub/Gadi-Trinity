@@ -149,9 +149,7 @@ Acknowledgements (and co-authorship, where appropriate) are an important way for
 
 ### Suggested acknowledgements:
 
-NCI Gadi
-
-The authors acknowledge the technical assistance provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government and Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia funding.
+The authors acknowledge the support provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government, and the Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia funding.
 
 # Cite us to support us!
 If you use our pipelines, please cite us:

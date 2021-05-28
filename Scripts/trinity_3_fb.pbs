@@ -1,4 +1,24 @@
 #! /bin/bash
+##########################################################################
+# 
+# Platform: NCI Gadi HPC
+# 
+# Version: 1.0
+# 
+# For more details see: https://github.com/Sydney-Informatics-Hub/gadi-trinity
+#
+# If you use this script towards a publication, please acknowledge the
+# Sydney Informatics Hub (or co-authorship, where appropriate).
+#
+# Suggested acknowledgement:
+# The authors acknowledge the support provided by the Sydney Informatics Hub, 
+# a Core Research Facility of the University of Sydney. This research/project 
+# was undertaken with the assistance of resources and services from the National 
+# Computational Infrastructure (NCI), which is supported by the Australian 
+# Government, and the Australian BioCommons which is enabled by NCRIS via 
+# Bioplatforms Australia funding.
+# 
+##########################################################################
 ## ---------------------------------------------------------------------------
 ## TRINITY 3 - FINAL ASSEMBLY
 ## Harvesting all assembled transcripts into a single multi-fasta file...

@@ -147,7 +147,7 @@ Acknowledgements (and co-authorship, where appropriate) are an important way for
 - Ben Menadue (National Computational Infrastructure)
 - Ben Evans (National Computational Infrastructure) 
 
-### Suggested acknowledgements:
+### Suggested acknowledgement:
 
 The authors acknowledge the support provided by the Sydney Informatics Hub, a Core Research Facility of the University of Sydney. This research/project was undertaken with the assistance of resources and services from the National Computational Infrastructure (NCI), which is supported by the Australian Government, and the Australian BioCommons which is enabled by NCRIS via Bioplatforms Australia funding.
 

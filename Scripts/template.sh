@@ -30,7 +30,7 @@ seqtype= <seqtype>
 io=$PWD
 script=${io}/Scripts
 resources=${io}/resources
-logs=${io}/Logs/test_fastq
+logs=${io}/Logs
 
 # Resource requests for steps 2 and 3. If the initial step (which will
 # run through to the end of chrysalis) is likely to be very large (for

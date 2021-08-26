@@ -44,6 +44,8 @@ salmon/1.1.0 \
 python2/2.7.17 \
 jellyfish/2.3.0 
 
+Trinity 2.9.1 is the default version used. 
+
 ### Input 
 
 A plain text file containing a list of input fastq files is required input. In this file, each row corresponds to 1 sample. Each row consists of column 1: incremental number (for job array), column 2: read 1 name and column 3: read 2 name. This file can be created by running the following from the directory containing your fastq files: 
@@ -132,6 +134,8 @@ The following benchmarking metrics were obtained using stem rust (_Puccinia gram
 * In `trinity_3_fb.pbs`, only the fasta files from the distributed step are copied to the node. Only the full assembly is copied back.  
 
 * The `sort-recursive.py` script is run by `trinity_2_fb.pbs`. It will sort the recursive commands to run on input files based on their size (largest to smallest). This is included to avoid long running, single CPU jobs from holding up a whole node. It improves overall job efficiency. 
+
+* The scripts were designed to use a __single project__ for KSU debiting and storage.
 
 # Acknowledgements
 Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities.

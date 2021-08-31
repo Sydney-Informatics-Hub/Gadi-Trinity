@@ -29,7 +29,7 @@
      
      if ((! $genome_guided_bam) && (! -d $chrysalis_output_dir)) {
 -        &process_cmd("mkdir -p $chrysalis_output_dir"); # note, won't be auto-cleaned up if not in the trinity_out_dir/
-+        &mkdirs($chyrsalis_output_dir);
++        &mkdirs($chrysalis_output_dir);
      }
  
      print STDERR "-changing dir to output dir: $output_directory\n" if $VERBOSE;

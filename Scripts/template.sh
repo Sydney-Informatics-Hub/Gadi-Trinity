@@ -26,6 +26,10 @@
 project= <project>
 list= <fastq.list>
 seqtype= <seqtype>
+# Set version of trinity. 2.9.1 or 2.12.0
+version=
+# Storage script for PBS command, e.g. scratch/<project>
+storage=
 
 io=$PWD
 script=${io}/Scripts
@@ -57,12 +61,12 @@ for i in $(seq 1 ${num_pairs}); do
 	# trinity_1.pbs
 	echo `date` ": Launching Trinity Part 1"
 	qsub \
-	    -v input="${i}",seqtype="${seqtype}",out="${out}",list="${list}",tissue="${tissue}",resources="${resources}",cpu_per_node="${cpu_per_node}",jobfs_per_node="${jobfs_per_node}",mem_per_node="${mem_per_node}",project="${project}",script="${script}",logs="${logs}",io="${io}" \
+	    -v input="${i}",seqtype="${seqtype}",out="${out}",list="${list}",tissue="${tissue}",resources="${resources}",cpu_per_node="${cpu_per_node}",jobfs_per_node="${jobfs_per_node}",mem_per_node="${mem_per_node}",project="${project}",script="${script}",logs="${logs}",io="${io}",storage="${storage}",version="${version}" \
 	    -N ${tissue}_1 \
 	    -P ${project} \
 	    -l wd,ncpus=48,mem=190GB,walltime=24:00:00,jobfs=400GB \
 	    -W umask=022 \
-	    -l storage=scratch/${project} \
+	    -l storage=${storage} \
 	    -q normal \
 	    -o ${logs}/${tissue}_job1.o \
 	    -e ${logs}/${tissue}_job1.e \

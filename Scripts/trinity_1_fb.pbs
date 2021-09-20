@@ -84,7 +84,7 @@ finish(){
                                -v out="${out}",tissue="${tissue}",fb="${fb}",resources="${resources}",io="${io}",version="${version}" \
                                -N ${tissue}_${fb} \
                                -P ${project} \
-                               -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
+                               -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=48:00:00,jobfs=${jobfs_per_node}GB \
                                -q normal \
                                -W umask=022 \
                                -l storage=${storage} \
@@ -101,7 +101,7 @@ finish(){
         -W depend=afterok:${jobids} \
         -v resources="${resources}",tissue="${tissue}",out="${out}",io="${io}",version="${version}" \
         -P ${project} \
-        -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
+        -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=48:00:00,jobfs=${jobfs_per_node}GB \
         -q normal \
         -W umask=022 \
         -l storage=${storage} \

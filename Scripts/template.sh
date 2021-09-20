@@ -64,7 +64,7 @@ for i in $(seq 1 ${num_pairs}); do
 	    -v input="${i}",seqtype="${seqtype}",out="${out}",list="${list}",tissue="${tissue}",resources="${resources}",cpu_per_node="${cpu_per_node}",jobfs_per_node="${jobfs_per_node}",mem_per_node="${mem_per_node}",project="${project}",script="${script}",logs="${logs}",io="${io}",storage="${storage}",version="${version}" \
 	    -N ${tissue}_1 \
 	    -P ${project} \
-	    -l wd,ncpus=48,mem=190GB,walltime=24:00:00,jobfs=400GB \
+	    -l wd,ncpus=48,mem=190GB,walltime=48:00:00,jobfs=400GB \
 	    -W umask=022 \
 	    -l storage=${storage} \
 	    -q normal \

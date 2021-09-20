@@ -46,15 +46,26 @@
 # ${logs}
 # ${script}             # Folder containing scripts
 # ${seqtype}
+# ${storage}            # The PBS storage string: -lstorage=${storage}
+# ${version}            # The version of trinity to use: 2.9.1 or 2.12.0
 
 tar xf ${resources}/apps.tar -C /tmp/
 export APPS_DIR=/tmp/
 module use ${APPS_DIR}/apps/Modules/modulefiles
-module load trinity/2.9.1
 module load bowtie2/2.3.5.1
 module load samtools/1.10
 module load salmon/1.1.0
-module load python2/2.7.17
+if [[ $version == '2.9.1' ]]
+then
+    echo "Loading python2/2.7.17 and Trinity/2.9.1"
+    module load python2/2.7.17
+    module load trinity/2.9.1
+elif [[ $version == '2.12.0' ]]
+then
+    echo "Loading python3/3.7.4 and Trinity/2.12.0"
+    module load python3/3.7.4
+    module load trinity/2.12.0
+fi
 module load jellyfish/2.3.0
 
 # Set trap
@@ -66,17 +77,17 @@ finish(){
 	echo "$(date) : Finished archiving trinity_1.pbs"
 
     # Submit the follow up recursive jobs
-    cd trinity_outdir/${tissue}_trinity_2.9.1/read_partitions
+    cd trinity_outdir/${tissue}_trinity_${version}/read_partitions
     for fb in Fb_*
     do
         jobids=${jobids}:$(qsub \
-                               -v out="${out}",tissue="${tissue}",fb="${fb}",resources="${resources}",io="${io}" \
+                               -v out="${out}",tissue="${tissue}",fb="${fb}",resources="${resources}",io="${io}",version="${version}" \
                                -N ${tissue}_${fb} \
                                -P ${project} \
                                -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
                                -q normal \
                                -W umask=022 \
-                               -l storage=scratch/${project} \
+                               -l storage=${storage} \
                                -o ${logs}/${tissue}_job_2_${fb}.o \
                                -e ${logs}/${tissue}_job_2_${fb}.e \
                                ${script}/trinity_2_fb.pbs)
@@ -88,12 +99,12 @@ finish(){
     # Submit the final assembly
     qsub \
         -W depend=afterok:${jobids} \
-        -v resources="${resources}",tissue="${tissue}",out="${out}",io="${io}" \
+        -v resources="${resources}",tissue="${tissue}",out="${out}",io="${io}",version="${version}" \
         -P ${project} \
         -l wd,ncpus=${cpu_per_node},mem=${mem_per_node}GB,walltime=24:00:00,jobfs=${jobfs_per_node}GB \
         -q normal \
         -W umask=022 \
-        -l storage=scratch/${project} \
+        -l storage=${storage} \
         -o ${logs}/${tissue}_job_3.o \
         -e ${logs}/${tissue}_job_3.e \
         ${script}/trinity_3_fb.pbs
@@ -107,7 +118,7 @@ second=$(awk -v taskID=${input} '$1==taskID {print $3}' ${list})
 
 mkdir -p ${out}
 
-echo "$(date) : Beginning trinity_1.pbs: Run to end of Chrysalis"
+echo "$(date) : Beginning trinity_1_fb.pbs: Run to end of Chrysalis"
 
 export TRINITY_WORKDIR=/dev/shm/trinity_workdir
 
@@ -126,8 +137,8 @@ ${TRINITY_HOME}/Trinity \
 	           --no_normalize_reads \
 	           --CPU ${PBS_NCPUS} \
 	           --workdir ${TRINITY_WORKDIR} \
-	           --output ${tissue}_trinity_2.9.1 \
+	           --output ${tissue}_trinity_${version} \
 	           --verbose \
 	           --no_distributed_trinity_exec
 
-echo "$(date) : Finished trinity_1.pbs"
+echo "$(date) : Finished trinity_1_fb.pbs"

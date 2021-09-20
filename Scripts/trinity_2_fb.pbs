@@ -37,6 +37,7 @@
 # ${io}
 # ${fb}               : Fb_0 etc
 # ${out}
+# ${version}          # The version of trinity to run
 
 cd ${io}
 
@@ -44,21 +45,30 @@ echo $resources
 tar xf ${resources}/apps.tar -C /tmp/
 export APPS_DIR=/tmp/
 module use ${APPS_DIR}/apps/Modules/modulefiles
-module load trinity/2.9.1
 module load bowtie2/2.3.5.1
 module load samtools/1.10
 module load salmon/1.1.0
-module load python2/2.7.17
+if [[ $version == '2.9.1' ]]
+then
+    echo "Loading python2/2.7.17 and Trinity/2.9.1"
+    module load python2/2.7.17
+    module load trinity/2.9.1
+elif [[ $version == '2.12.0' ]]
+then
+    echo "Loading python3/3.7.4 and Trinity/2.12.0"
+    module load python3/3.7.4
+    module load trinity/2.12.0
+fi
 module load jellyfish/2.3.0
 
 
 finish(){
     echo "$(date): Copying data from jobFS to ${out}..."
 
-    cd ${TRINITY_OUTDIR}/${tissue}_trinity_2.9.1
+    cd ${TRINITY_OUTDIR}/${tissue}_trinity_${version}
     tar cf ${out}/trinity_outdir_2_${fb}.tar read_partitions
 
-    echo "$(date) : Finished trinity_2_.pbs for ${fb}"
+    echo "$(date) : Finished trinity_2_fb.pbs for ${fb}"
 }
 trap finish EXIT
 
@@ -76,23 +86,23 @@ echo "$(date): Currently in ${TRINITY_OUTDIR}"
 
 # Re-write "partitioned_reads.files.list" so it has the correct paths
 echo "$(date): Updating paths for partitioned_reads.files.list"
-find ${PWD}/ -iname '*trinity.reads.fa' > ${tissue}_trinity_2.9.1/partitioned_reads.files.list
+find ${PWD}/ -iname '*trinity.reads.fa' > ${tissue}_trinity_${version}/partitioned_reads.files.list
 find ${PWD}/ -iname '*trinity.reads.fa'
-head ${tissue}_trinity_2.9.1/partitioned_reads.files.list
+head ${tissue}_trinity_${version}/partitioned_reads.files.list
 
 # Re-write "recursive_trinity.cmds" so that it has correct paths
 echo "$(date): Updating paths for recursive_trinity.cmds"
 echo "before:" 
-head ${tissue}_trinity_2.9.1/recursive_trinity.cmds
-sed -i -e 's|\/jobfs\/[0-9]\+\.gadi-pbs|'${PBS_JOBFS}'|g' ${tissue}_trinity_2.9.1/recursive_trinity.cmds
+head ${tissue}_trinity_${version}/recursive_trinity.cmds
+sed -i -e 's|\/jobfs\/[0-9]\+\.gadi-pbs|'${PBS_JOBFS}'|g' ${tissue}_trinity_${version}/recursive_trinity.cmds
 echo "after:"
-head ${tissue}_trinity_2.9.1/recursive_trinity.cmds
+head ${tissue}_trinity_${version}/recursive_trinity.cmds
 
 # Select relevant commands
-grep ${fb}/ ${tissue}_trinity_2.9.1/recursive_trinity.cmds > ${tissue}_trinity_2.9.1/recursive_trinity.${fb}.cmds
+grep ${fb}/ ${tissue}_trinity_${version}/recursive_trinity.cmds > ${tissue}_trinity_${version}/recursive_trinity.${fb}.cmds
 
-${io}/Scripts/sort-recursive.py ${tissue}_trinity_2.9.1/recursive_trinity.${fb}.cmds
+${io}/Scripts/sort-recursive.py ${tissue}_trinity_${version}/recursive_trinity.${fb}.cmds
 
 export OMP_PROC_BIND=TRUE
-${TRINITY_HOME}/trinity-plugins/ParaFly-0.1.0/bin/ParaFly -c ${tissue}_trinity_2.9.1/recursive_trinity.${fb}.cmds.sorted -CPU ${PBS_NCPUS}
+${TRINITY_HOME}/trinity-plugins/ParaFly-0.1.0/bin/ParaFly -c ${tissue}_trinity_${version}/recursive_trinity.${fb}.cmds.sorted -CPU ${PBS_NCPUS}
 

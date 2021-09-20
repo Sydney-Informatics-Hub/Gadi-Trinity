@@ -33,17 +33,18 @@
 # ${tissue}
 # ${io}
 # ${out}
+# ${version}            # The version of trinity to use: 2.9.1 or 2.12.0
 
 cd ${io}
 
 tar xf ${resources}/apps.tar -C /tmp/
 export APPS_DIR=/tmp/
 module use ${APPS_DIR}/apps/Modules/modulefiles
-module load trinity/2.9.1
+module load trinity/${version}
 
-echo "$(date): Beginning trinity_3.pbs: Harvest reads into a final assembly"
+echo "$(date): Beginning trinity_3_fb.pbs: Harvest reads into a final assembly"
 
-export TRINITY_OUTDIR=${PBS_JOBFS}/${tissue}_trinity_2.9.1
+export TRINITY_OUTDIR=${PBS_JOBFS}/${tissue}_trinity_${version}
 mkdir -p ${TRINITY_OUTDIR}
 
 cd ${TRINITY_OUTDIR}
@@ -61,15 +62,15 @@ find read_partitions/ -name '*inity.fasta'  | \
                      --token_prefix TRINITY_DN \
                      --output_prefix Trinity.tmp
 
-mv Trinity.tmp.fasta ${tissue}.trinity_2.9.1.fasta
+mv Trinity.tmp.fasta ${tissue}.trinity_${version}.fasta
 
 echo "$(date): ** Creating genes_trans_map file with "${TRINITY_HOME}"/util/support_scripts/get_Trinity_gene_to_trans_map.pl..."
 
-${TRINITY_HOME}/util/support_scripts/get_Trinity_gene_to_trans_map.pl ${tissue}.trinity_2.9.1.fasta > ${tissue}.trinity_2.9.1.fasta.gene_trans_map
+${TRINITY_HOME}/util/support_scripts/get_Trinity_gene_to_trans_map.pl ${tissue}.trinity_${version}.fasta > ${tissue}.trinity_${version}.fasta.gene_trans_map
 
 echo "$(date): Moving files back from node"
 
-mv ${tissue}.trinity_2.9.1.fasta ${out}/${tissue}_trinity_2.9.1.fasta
-mv ${tissue}.trinity_2.9.1.fasta.gene_trans_map ${out}/${tissue}_trinity_2.9.1.gene_trans_map
+mv ${tissue}.trinity_${version}.fasta ${out}/${tissue}_trinity_${version}.fasta
+mv ${tissue}.trinity_${version}.fasta.gene_trans_map ${out}/${tissue}_trinity_${version}.gene_trans_map
 
 echo "$(date): Done"

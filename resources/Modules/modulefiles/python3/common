@@ -1,0 +1,10 @@
+append sub_version "python" "[ string range $::version 0 2 ]"
+if { ! [ file isdirectory $::basedir/include/$sub_version ] } {
+    append sub_version "m"
+}
+
+bin-dir bin
+include-dir -language c,c++,f include/$sub_version
+lib-dir lib
+man-dir share/man
+pkgconfig-dir lib/pkgconfig

@@ -25,6 +25,8 @@ This repository contains all scripts and software required to run Gadi-Trinity. 
     - list= (path/to/fastq/list)
     - seqtype= (fq or fa)
     - tissue= make sure this pulls the correct field from your fq file name
+    - storage= the string to pass the PBS storage key, ie scratch/<project>+gdata/<project>
+    - version= Choose from trinity version 2.9.1 or 2.12.0
 
 ### Installation 
 
@@ -37,14 +39,13 @@ Clone the trinity-NCI-Gadi repository to your project’s scratch directory
 
 Trinity requires the following software to be installed and loaded as modules from apps already installed on Gadi. A module archive of these software is created by running `create-apps.sh` in the resources directory. 
 
-trinity/2.9.1 \
+trinity/2.9.1  or trinity/2.12.0 \
 bowtie2/2.3.5.1 \
 samtools/1.10 \
 salmon/1.1.0 \
-python2/2.7.17 \
+python2/2.7.17 or python3/3.7.4 \
 jellyfish/2.3.0 
 
-Trinity 2.9.1 is the default version used. 
 
 ### Input 
 

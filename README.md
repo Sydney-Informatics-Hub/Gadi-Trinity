@@ -145,12 +145,11 @@ Acknowledgements (and co-authorship, where appropriate) are an important way for
 
 - Tracy Chew (Sydney Informatics Hub, University of Sydney)
 - Georgina Samaha (Sydney Informatics Hub, University of Sydney)
+- Cali Willet (Sydney Informatics Hub, University of Sydney)
 - Rosemarie Sadsad (Sydney Informatics Hub, University of Sydney)
-- Andrey Bliznyuk (National Computational Infrastructure)
 - Rika Kobayashi (National Computational Infrastructure)
 - Matthew Downton (National Computational Infrastructure)
 - Ben Menadue (National Computational Infrastructure)
-- Ben Evans (National Computational Infrastructure) 
 
 ### Suggested acknowledgement:
 
@@ -158,7 +157,7 @@ The authors acknowledge the support provided by the Sydney Informatics Hub, a Co
 
 # Cite us to support us!
 
-The Gadi-Trinity pipeline can be cited as DOI: https://doi.org/10.48546/workflowhub.workflow.145.1  
+Chew, T., Samaha, G., Downton, M., Willet, C., Menadue, B. J., Kobayashi, R., & Sadsad, R. (2021). Gadi-Trinity (Version 1.0) [Computer software]. https://doi.org/10.48546/workflowhub.workflow.145.1
 
 # References 
 
